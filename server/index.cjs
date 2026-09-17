@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const db = require('./db.cjs');
 
 const app = express();
@@ -7,6 +8,9 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
+
+// Servir arquivos estáticos do front-end compilado
+app.use(express.static(path.join(__dirname, '../dist')));
 
 // ==================== PRODUTOS ====================
 
@@ -284,7 +288,14 @@ app.delete('/api/vendedores/:id', (req, res) => {
   }
 });
 
+// Fallback para SPA (React Router)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
 });
+
+
 

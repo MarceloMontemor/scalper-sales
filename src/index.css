@@ -821,6 +821,7 @@ tbody tr:last-child td {
 @media (max-width: 768px) {
   .sidebar {
     transform: translateX(-100%);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
   }
 
   .sidebar.open {
@@ -831,7 +832,8 @@ tbody tr:last-child td {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
     z-index: 90;
   }
 
@@ -841,42 +843,150 @@ tbody tr:last-child td {
 
   .mobile-toggle {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    top: 12px;
+    left: 12px;
   }
 
   .main-content {
     margin-left: 0;
+    width: 100%;
   }
 
   .page-header {
-    padding: 20px 20px 20px 64px;
+    padding: 16px 16px 16px 64px;
+  }
+
+  .page-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .page-header p {
+    font-size: 0.8rem;
   }
 
   .page-body {
-    padding: 20px;
+    padding: 16px 12px 32px 12px;
   }
 
-  .form-row,
-  .form-row-3 {
+  .stats-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    padding: 16px 18px;
+  }
+
+  .stat-card .stat-value {
+    font-size: 1.45rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .card-header .btn-primary {
+    width: 100%;
   }
 
   .filters-bar {
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .filters-bar > div {
+    width: 100%;
   }
 
   .filters-bar .form-input,
   .filters-bar .form-select {
-    width: 100%;
-    min-width: 0;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+
+  .form-row,
+  .form-row-3 {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .form-calc {
+    grid-template-columns: 1fr;
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .modal-overlay {
+    padding: 10px;
+    align-items: flex-end;
   }
 
   .modal {
     max-width: 100%;
-    margin: 10px;
-    max-height: calc(100vh - 20px);
+    margin: 0;
+    max-height: 92vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .modal-header {
+    padding: 18px 20px;
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .modal-footer {
+    padding: 16px 20px;
+    flex-direction: column-reverse;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
+
+  /* Table mobile scrolling and compact padding */
+  .table-container {
+    margin: 0 -1px;
+    border-radius: 0;
+  }
+
+  table {
+    min-width: 600px;
+  }
+
+  tbody td, thead th {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+
+  .toast-container {
+    top: auto;
+    bottom: 20px;
+    left: 16px;
+    right: 16px;
+  }
+
+  .toast {
+    min-width: 0;
+    width: 100%;
   }
 }
+
 
 /* ==================== SCROLLBAR ==================== */
 ::-webkit-scrollbar {

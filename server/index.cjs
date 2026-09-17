@@ -288,10 +288,14 @@ app.delete('/api/vendedores/:id', (req, res) => {
   }
 });
 
-// Fallback para SPA (React Router)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+// Fallback para SPA (React Router - compatível com Express 5)
+app.use((req, res, next) => {
+  if (req.method === 'GET' && !req.path.startsWith('/api')) {
+    return res.sendFile(path.join(__dirname, '../dist/index.html'));
+  }
+  next();
 });
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
